@@ -1,0 +1,291 @@
+:root {
+    --bg: #080808;
+    --panel: #0d0d0d;
+    --panel-border: #161616;
+    --text: #e0e0e0;
+    --muted: #bcbcbc;
+    --pink: #fbc4d6;
+    --brown: #7b4c2b;
+    --gold: #d4af37;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+body {
+    background-color: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--pink);
+    border-radius: 10px;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+header {
+    text-align: center;
+    padding: 60px 20px 30px;
+    background: linear-gradient(180deg, #0d0d0d 0%, transparent 100%);
+}
+
+header h1 {
+    font-size: 3rem;
+    font-weight: 300;
+    text-transform: uppercase;
+    letter-spacing: 7px;
+    color: #ffffff;
+    text-shadow: 0 0 25px rgba(251, 196, 214, 0.25);
+    margin-bottom: 15px;
+}
+
+header p {
+    color: var(--pink);
+    font-size: 1.1rem;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    opacity: 0.9;
+}
+
+.page-nav {
+    width: min(1200px, calc(100% - 40px));
+    margin: 26px auto 0;
+}
+
+.page-nav a {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 0.85rem;
+}
+
+.page-nav a:hover {
+    color: #fff;
+}
+
+.store-gallery {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(280px, 1fr));
+    gap: 40px;
+    max-width: 1400px;
+    margin: 40px auto;
+    padding: 0 40px 60px;
+}
+
+.pig-card {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    border-radius: 40px;
+    overflow: hidden;
+    background-color: var(--panel);
+    border: 1px solid var(--panel-border);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
+    cursor: pointer;
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+        border-color 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+        box-shadow 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.pig-card:hover {
+    transform: scale(1.04);
+    border-color: var(--pink);
+    box-shadow: 0 20px 45px rgba(251, 196, 214, 0.12);
+}
+
+.pig-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(85%) contrast(95%);
+    transition: filter 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.pig-card:hover img {
+    filter: brightness(100%) contrast(100%);
+}
+
+.pig-menu {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: rgba(13, 13, 13, 0.96);
+    border-top: 1px solid rgba(251, 196, 214, 0.25);
+    padding: 25px 20px;
+    transform: translateY(105%);
+    transition: transform 0.55s cubic-bezier(0.16, 1, 0.3, 1);
+    backdrop-filter: blur(12px);
+    z-index: 2;
+}
+
+.pig-card:hover .pig-menu {
+    transform: translateY(0);
+}
+
+.pig-menu h3 {
+    color: var(--pink);
+    font-size: 1.2rem;
+    font-weight: 500;
+    margin-bottom: 8px;
+    letter-spacing: 0.6px;
+}
+
+.pig-menu p {
+    color: var(--muted);
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+.selector-grid {
+    width: min(1200px, calc(100% - 40px));
+    margin: 20px auto 60px;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(280px, 1fr));
+    gap: 28px;
+}
+
+.selector-card {
+    position: relative;
+    min-height: 390px;
+    border-radius: 40px;
+    overflow: hidden;
+    border: 1px solid var(--panel-border);
+    background: var(--panel);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+        border-color 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+        box-shadow 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.selector-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(78%) contrast(95%);
+    transition: filter 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.selector-card:hover {
+    transform: translateY(-8px) scale(1.01);
+}
+
+.selector-card:hover img {
+    filter: brightness(96%) contrast(102%);
+}
+
+.selector-card .pig-menu {
+    transform: translateY(0);
+    background: linear-gradient(180deg, rgba(13, 13, 13, 0.1) 0%, rgba(13, 13, 13, 0.95) 55%);
+    border-top: 0;
+    padding-top: 80px;
+}
+
+.selector-card h2 {
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+    letter-spacing: 1px;
+}
+
+.selector-card p {
+    color: var(--muted);
+    line-height: 1.6;
+}
+
+.selector-card.ilya {
+    grid-column: 1 / -1;
+    max-width: 520px;
+    justify-self: center;
+    min-height: 480px;
+}
+
+.selector-card.ilya:hover {
+    border-color: rgba(212, 175, 55, 0.95);
+    box-shadow: 0 24px 55px rgba(212, 175, 55, 0.24);
+}
+
+.selector-card.ilya .pig-menu h2,
+.selector-card.ilya .pig-menu h3 {
+    color: var(--gold);
+}
+
+.selector-card.sanya:hover,
+.selector-card.matvey:hover {
+    border-color: rgba(123, 76, 43, 0.95);
+    box-shadow: 0 22px 48px rgba(123, 76, 43, 0.26);
+}
+
+.selector-card.sanya .pig-menu h2,
+.selector-card.matvey .pig-menu h2 {
+    color: #d7a170;
+}
+
+footer {
+    text-align: center;
+    padding: 40px;
+    margin-top: auto;
+    border-top: 1px solid var(--panel-border);
+    color: #444;
+    font-size: 0.85rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+@media (max-width: 1100px) {
+    .store-gallery {
+        grid-template-columns: repeat(2, minmax(280px, 1fr));
+        gap: 30px;
+        padding: 0 30px 60px;
+    }
+}
+
+@media (max-width: 800px) {
+    .selector-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .selector-card.ilya {
+        grid-column: auto;
+        max-width: none;
+        min-height: 390px;
+    }
+}
+
+@media (max-width: 700px) {
+    .store-gallery {
+        grid-template-columns: 1fr;
+        padding: 0 20px 60px;
+    }
+
+    header h1 {
+        font-size: 2.2rem;
+    }
+
+    .pig-card,
+    .selector-card {
+        border-radius: 30px;
+    }
+}
